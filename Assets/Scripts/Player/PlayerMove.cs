@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float jumpForce = 5f;
     public Vector2 minLimit;
     public Vector2 maxLimit;
 

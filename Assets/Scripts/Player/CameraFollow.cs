@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 offset;
 
-    void Strat()
+    void Start()
     {
         if (target == null) return;
         offset = transform.position - target.position;
