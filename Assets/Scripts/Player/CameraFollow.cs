@@ -15,6 +15,8 @@ public class CameraFollow : MonoBehaviour
     {
         if (target == null) return;
         offset = transform.position - target.position;
+
+        Camera.main.orthographicSize = 10f;
     }
 
     void LateUpdate()
