@@ -9,18 +9,36 @@ public class PlayerMove : MonoBehaviour
     public Vector2 maxLimit;
 
     private Rigidbody2D _rigidBody;
+    private Animator animator;
+
     private Vector2 movement;
+    private Vector2 lastDirection = Vector2.down;
 
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
         movement = new Vector2(horizontal, vertical).normalized;
+
+        if (movement != Vector2.zero)
+        {
+            lastDirection = movement;
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+
+        animator.SetFloat("MoveX", lastDirection.x);
+        animator.SetFloat("MoveY", lastDirection.y);
     }
 
     void FixedUpdate()
